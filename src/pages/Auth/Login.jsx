@@ -16,7 +16,6 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Mocking an API call
     setTimeout(() => {
       login(email, password, role);
       navigate(`/${role}/dashboard`);
@@ -29,7 +28,7 @@ export default function Login() {
         <div className={styles.authHeader}>
           <div className={styles.logo}>
             <BookOpen className={styles.logoIcon} />
-            AIRA
+            Resume Analyzer
           </div>
           <h1 className={styles.title}>Welcome back</h1>
           <p className={styles.subtitle}>Enter your details to access your account.</p>

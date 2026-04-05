@@ -5,13 +5,21 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // { role: 'student' | 'faculty', name: string, email: string }
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = (email, password, role) => {
-    // Mock login logic
-    setUser({ name: 'Demo User', email, role });
+    setUser({ name: 'Demo User', email, role, isProfileComplete: true });
     setIsAuthenticated(true);
+  };
+
+  const signup = (name, email, password, role) => {
+    setUser({ name, email, role, isProfileComplete: false });
+    setIsAuthenticated(true);
+  };
+
+  const completeProfile = () => {
+    setUser((prev) => ({ ...prev, isProfileComplete: true }));
   };
 
   const logout = () => {
@@ -20,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, signup, completeProfile, logout }}>
       {children}
     </AuthContext.Provider>
   );

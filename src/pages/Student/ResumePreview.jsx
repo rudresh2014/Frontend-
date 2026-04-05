@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, Button } from '../../components/ui';
-import { Download, Edit2 } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, Button, Input } from '../../components/ui';
+import { Download, Edit2, RotateCw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import styles from './student.module.css';
 
@@ -16,7 +16,10 @@ export default function ResumePreview() {
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <Button variant="outline" onClick={() => navigate('/student/resume-builder')}>
-            <Edit2 size={16} style={{ marginRight: '0.5rem' }} /> Edit Details
+            <Edit2 size={16} style={{ marginRight: '0.5rem' }} /> Edit Resume
+          </Button>
+          <Button variant="secondary" onClick={() => navigate('/student/resume-builder')}>
+            <RotateCw size={16} style={{ marginRight: '0.5rem' }} /> Regenerate
           </Button>
           <Button>
             <Download size={16} style={{ marginRight: '0.5rem' }} /> Download PDF
@@ -35,12 +38,12 @@ export default function ResumePreview() {
         <div className={styles.resumeSection}>
           <h2>Education</h2>
           <div className={styles.resumeItem}>
-            <div className={styles.resumeItemHeader}>
-              <span>State University</span>
-              <span>2020 - 2024</span>
-            </div>
-            <div>B.Tech Computer Science</div>
-            <div>CGPA: 8.5/10.0</div>
+             <div className={styles.resumeItemHeader}>
+               <span>State University</span>
+               <span>2020 - 2024</span>
+             </div>
+             <div>B.Tech Computer Science</div>
+             <div>CGPA: 8.5/10.0</div>
           </div>
         </div>
 
@@ -51,23 +54,23 @@ export default function ResumePreview() {
             <br />
             <strong>Frameworks:</strong> React, Express, Django
             <br />
-            <strong>Tools:</strong> Git, Docker, AWS
+             <strong>Tools:</strong> Git, Docker, AWS
           </div>
         </div>
 
         <div className={styles.resumeSection}>
           <h2>Projects</h2>
-          <div className={styles.resumeItem}>
-            <div className={styles.resumeItemHeader}>
-              <span>AI Resume Analyzer</span>
-              <span>React, Node.js, AI Models</span>
-            </div>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-              <li>Built a comprehensive platform for students to generate standardized resumes.</li>
-              <li>Integrated AI evaluation models to provide real-time feedback and scoring.</li>
-              <li>Developed role-based dashboards with secure authentication.</li>
-            </ul>
-          </div>
+           <div className={styles.resumeItem}>
+             <div className={styles.resumeItemHeader}>
+               <span>AI Resume Analyzer</span>
+               <span>React, Node.js, AI Models</span>
+             </div>
+             <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+               <li>Built a comprehensive platform for students to generate standardized resumes.</li>
+               <li>Integrated AI evaluation models to provide real-time feedback and scoring.</li>
+               <li>Developed role-based dashboards with secure authentication.</li>
+             </ul>
+           </div>
         </div>
       </div>
     </div>

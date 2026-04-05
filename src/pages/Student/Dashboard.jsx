@@ -1,15 +1,28 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, Button } from '../../components/ui';
 import { Trophy, FileText, Target, Award } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import AIRAScore from '../../components/Student/AIRAScore';
 import styles from './student.module.css';
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '1.875rem', fontWeight: 700 }}>Overview</h1>
-        <p style={{ color: 'var(--text-muted)' }}>Here is your current progression and AIRA score breakdown.</p>
+      <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h1 style={{ fontSize: '1.875rem', fontWeight: 700 }}>Dashboard</h1>
+          <p style={{ color: 'var(--text-muted)' }}>Here is your current progression and AIRA score breakdown.</p>
+        </div>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <Button variant="outline" onClick={() => navigate('/student/resume-builder')}>
+            Edit Resume
+          </Button>
+          <Button onClick={() => navigate('/student/preview')}>
+            View Resume
+          </Button>
+        </div>
       </div>
 
       <div className={styles.statsRow}>
@@ -34,7 +47,7 @@ export default function Dashboard() {
               </div>
               <div className={styles.statInfo}>
                 <h4>Resume Completeness</h4>
-                <p>85%</p>
+                <p>100%</p>
               </div>
             </div>
           </CardContent>
@@ -87,9 +100,11 @@ export default function Dashboard() {
                 </div>
               </li>
             </ul>
-            <Button className="mt-6" fullWidth onClick={() => window.location.href='/student/resume-builder'}>
-              Update Resume
-            </Button>
+            <div style={{ marginTop: '3.5rem' }}>
+              <Button fullWidth onClick={() => navigate('/student/resume-builder')}>
+                 Regenerate Resume
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

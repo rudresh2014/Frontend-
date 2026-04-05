@@ -9,8 +9,7 @@ export default function Sidebar({ role }) {
 
   const studentLinks = [
     { name: 'Dashboard', path: '/student/dashboard', icon: LayoutDashboard },
-    { name: 'Resume Builder', path: '/student/resume-builder', icon: FileText },
-    { name: 'Preview & Download', path: '/student/preview', icon: BookOpen },
+    { name: 'View Resume', path: '/student/preview', icon: FileText },
     { name: 'Settings', path: '/student/settings', icon: Settings },
   ];
 
@@ -26,7 +25,7 @@ export default function Sidebar({ role }) {
       <div className={styles.sidebarHeader}>
         <NavLink to={`/${role}/dashboard`} className={styles.logo}>
           <BookOpen size={24} />
-          AIRA
+          Resume Analyzer
         </NavLink>
       </div>
       

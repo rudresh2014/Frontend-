@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { BookOpen, Lock, Mail, User } from 'lucide-react';
 import { Input, Button } from '../../components/ui';
 import styles from './auth.module.css';
@@ -9,22 +10,26 @@ export default function Signup() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { signup } = useAuth();
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
     setError('');
 
-    // Domain validation restriction
     if (!formData.email.endsWith('@college.edu')) {
       setError('Please use your official @college.edu email address.');
       return;
     }
 
     setIsLoading(true);
-    // Mocking an API call
     setTimeout(() => {
-      navigate('/login');
+      signup(formData.name, formData.email, formData.password, role);
+      if (role === 'student') {
+        navigate('/onboarding');
+      } else {
+        navigate('/faculty/dashboard');
+      }
     }, 1500);
   };
 
@@ -34,10 +39,10 @@ export default function Signup() {
         <div className={styles.authHeader}>
           <div className={styles.logo}>
             <BookOpen className={styles.logoIcon} />
-            AIRA
+            Resume Analyzer
           </div>
           <h1 className={styles.title}>Create an account</h1>
-          <p className={styles.subtitle}>Join AIRA to build and analyze your resume.</p>
+          <p className={styles.subtitle}>Join the Resume Analyzer to build your resume.</p>
         </div>
 
         <form className={styles.authForm} onSubmit={handleSignup}>

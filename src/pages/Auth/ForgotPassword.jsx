@@ -19,7 +19,7 @@ export default function ForgotPassword() {
         <div className={styles.authHeader}>
           <div className={styles.logo}>
             <BookOpen className={styles.logoIcon} />
-            AIRA
+            Resume Analyzer
           </div>
           <h1 className={styles.title}>Reset Password</h1>
           <p className={styles.subtitle}>
@@ -46,11 +46,11 @@ export default function ForgotPassword() {
               </Button>
             </form>
           ) : (
-            <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
-              <p style={{color: 'var(--text-muted)'}}>
-                We've sent a password reset link to <strong>{email}</strong>.
-              </p>
-            </div>
+             <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
+               <p style={{color: 'var(--text-muted)'}}>
+                 We've sent a password reset link to <strong>{email}</strong>.
+               </p>
+             </div>
           )}
 
           <div className={styles.footer}>
